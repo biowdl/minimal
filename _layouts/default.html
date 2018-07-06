@@ -38,19 +38,21 @@
         </ul>
         {% endif %}
 
+        <h2>contents</h2>
+        <!--https://github.com/allejo/jekyll-toc-->
+        <div style="height: 200px; overflow-y: scroll;">
         {% include toc.html html=content %}
+        </div>
 
         <h2>Pipelines:</h2>
+        <div style="height: 200px; overflow-y: scroll;">
         WIP...</br>
         {% for repository in site.github.public_repositories %}
-          {{ repository.name }}
-          {% for topic in repository.topics %}
-            {{ topic }}</br>
-          {% endfor %}
           {% if repository.topics contains "pipeline" %}
-            <a href="{{ repository.name }}">{{ repository.name }}</a> (<a href="{{ repository.html_url }}">repo</a>)</br>
+            <a href="{{ repository.name }}">{{ repository.name }}</a> (<a href="{{ repository.html_url }}">repo</a>) {{ repository }}</br>
           {% endif %}
         {% endfor %}
+        </div>
 
       </header>
       <section>
