@@ -48,8 +48,9 @@
         <div style="height: 200px; overflow-y: scroll;">
         WIP...</br>
         {% for repository in site.github.public_repositories %}
+          {{ repository }}</br>
           {% if repository.topics contains "pipeline" %}
-            <a href="{{ repository.name }}">{{ repository.name }}</a> (<a href="{{ repository.html_url }}">repo</a>) {{ repository }}</br>
+            <a href="{{ repository.name }}">{{ repository.name }}</a> (<a href="{{ repository.html_url }}">repo</a>) </br>
           {% endif %}
         {% endfor %}
         </div>
