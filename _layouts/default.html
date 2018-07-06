@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
+      <header style="height: 200px; overflow-y: scroll;">
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
 
         {% if site.logo %}
@@ -38,28 +38,24 @@
         </ul>
         {% endif %}
 
-        <h2>contents</h2>
+        <h2>Contents:</h2>
         <!--https://github.com/allejo/jekyll-toc-->
-        <div style="height: 200px; overflow-y: scroll;">
         {% include toc.html html=content %}
-        </div>
 
         <h2>Pipelines:</h2>
-        <div style="height: 200px; overflow-y: scroll;">
         WIP...</br>
         {% for repository in site.github.public_repositories %}
           {% assign notShown =  "test|ansible-cromwell-database|biowdl.github.io|tasks|pipeline-template" | split: "|" %}
           {% unless notShown contains repository.name %}
-            <a href="{{ repository.name }}">{{ repository.name }}</a> (<a href="{{ repository.html_url }}">repo</a>) </br>
+            <a href="https://biowdl.github.io/{{ repository.name }}">{{ repository.name }}</a> (<a href="{{ repository.html_url }}">repo</a>) </br>
           {% endunless %}
         {% endfor %}
-        </div>
 
       </header>
       <section>
 
       <i>Copyright 2018 Sequencing Analysis Support Core - Leiden University
-        Medical Center</i>
+        Medical Center</i></br>
 
       {{ content }}
 
