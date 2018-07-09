@@ -43,7 +43,6 @@
         {% include toc.html html=content %}
 
         <h2>Pipelines:</h2>
-        WIP...</br>
         {% for repository in site.github.public_repositories %}
           {% assign notShown =  "test|ansible-cromwell-database|biowdl.github.io|tasks|pipeline-template" | split: "|" %}
           {% unless notShown contains repository.name %}
