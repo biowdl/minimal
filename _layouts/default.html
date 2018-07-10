@@ -42,21 +42,63 @@
         <!--https://github.com/allejo/jekyll-toc-->
         {% include toc.html html=content %}
 
-        <h2>Pipelines:</h2>
+        <!-- split repos into catergories -->
+        {% assign multisample = '' | split: '' %}
+        {% assign singlesample = '' | split: '' %}
+        {% assign multisampleExp = '' | split: '' %}
+        {% assign singlesampleExp = '' | split: '' %}
+
         {% for repository in site.github.public_repositories %}
-          {% assign notShown =  "test|ansible-cromwell-database|biowdl.github.io|tasks|pipeline-template" | split: "|" %}
-          {% unless notShown contains repository.name %}
-            <a href="https://biowdl.github.io/{{ repository.name }}">{{ repository.name }}</a> (<a href="{{ repository.html_url }}">repo</a>) </br>
-          {% endunless %}
+          {% assign category = repository.description | split: "Category:" | first %}
+          {% assign repoName = repository.name | split: '@@@' %}
+          {% if category == "Multi-Sample" %}
+            {% assign multisample = multisample | concat: repoName %}
+          {% endif %}
+          {% if category == "Single-Sample" %}
+            {% assign singlesample = singlesample | concat: repoName %}
+          {% endif %}
+          {% if category == "Multi-Sample Experimental" %}
+            {% assign multisampleExp = multisampleExp | concat: repoName %}
+          {% endif %}
+          {% if category == "Single-Sample Experimental" %}
+            {% assign singlesampleExp = singlesampleExp | concat: repoName %}
+          {% endif %}
+        {% endfor %}
+
+        <h2>Multi-Sample Pipelines:</h2>
+        {% for repoName in multisample %}
+          <a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>) <br />
+        {% endfor %}
+        <h2>Single-Sample Pipelines:</h2>
+        {% for repoName in singlesample %}
+          <a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>) <br />
+        {% endfor %}
+        <h2>Experimental Multi-Sample Pipelines:</h2>
+        {% for repoName in multisampleExp %}
+          <a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>) <br />
+        {% endfor %}
+        <h2>Experimental Single-Sample Pipelines:</h2>
+        {% for repoName in singlesampleExp %}
+          <a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>) <br />
         {% endfor %}
 
       </header>
       <section>
 
-      <i>
-        Copyright 2018 Sequencing Analysis Support Core - Leiden University
-        Medical Center
-      </i></br></br>
+      <i>Copyright 2018 Sequencing Analysis Support Core - Leiden University Medical Center</i>
+      <br /><br />
+
+      {% if site.github.is_project_page %}
+        {% if site.github.releases.size == 0 %}
+          <blockquote>
+            <p>
+              There are no releases available for this repository.
+              The content is, therfore, likely still under development and
+              not production ready. Use at own risk!
+            </p>
+          </blockquote>
+        {% endif %}
+      {% endif %}
 
       {{ content }}
 
@@ -65,7 +107,7 @@
         {% if site.github.is_project_page %}
         <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Original theme by <a href="https://github.com/orderedlist">orderedlist</a>, modifer for BioWDL.</small></p>
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
