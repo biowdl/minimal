@@ -108,18 +108,20 @@
 
       {{ content }}
 
+        <footer>
+          <hr />
+          <p>
+            {% if site.github.is_project_page %}
+              This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> &mdash;
+            {% endif %}
+            <small>
+              Hosted on GitHub Pages &mdash; Original theme by <a href="https://github.com/orderedlist">orderedlist</a>, modified for BioWDL.
+            </small>
+          </p>
+        </footer>
+
       </section>
-      <footer>
-        <hr />
-        <p>
-          {% if site.github.is_project_page %}
-            This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> &mdash;
-          {% endif %}
-          <small>
-            Hosted on GitHub Pages &mdash; Original theme by <a href="https://github.com/orderedlist">orderedlist</a>, modified for BioWDL.
-          </small>
-        </p>
-      </footer>
+
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     {% if site.google_analytics %}
