@@ -2,3 +2,34 @@
 ---
 
 @import "jekyll-theme-minimal";
+
+header {
+  height: 80%;
+  display: block;
+  overflow-y: scroll
+}
+
+section {
+  width:550px;
+  margin-bottom: 50px;
+}
+
+footer {
+  width:550px;
+  bottom:0px;
+  text-align: right;
+  background: white;
+}
+
+@media print, screen and (max-width: 960px) {
+  header {
+    overflow-y: auto;
+  }
+  header ul.content {
+    position:inherit;
+  }
+
+  footer {
+    width:100%
+  }
+}
