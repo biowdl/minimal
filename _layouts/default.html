@@ -44,19 +44,26 @@
 
         <h2>Pipelines:</h2>
         {% for repository in site.github.public_repositories %}
-          {% assign notShown =  "test|ansible-cromwell-database|biowdl.github.io|tasks|pipeline-template" | split: "|" %}
-          {% unless notShown contains repository.name %}
+          <!--{% assign notShown =  "test|ansible-cromwell-database|biowdl.github.io|tasks|pipeline-template" | split: "|" %}-->
+          {% if repository.has_pages %}
             <a href="https://biowdl.github.io/{{ repository.name }}">{{ repository.name }}</a> (<a href="{{ repository.html_url }}">repo</a>) </br>
-          {% endunless %}
+          {% endif %}
         {% endfor %}
 
       </header>
       <section>
 
-      <i>
-        Copyright 2018 Sequencing Analysis Support Core - Leiden University
-        Medical Center
-      </i></br></br>
+      <i>Copyright 2018 Sequencing Analysis Support Core - Leiden University Medical Center</i>
+      </br></br>
+
+      {% if site.github.is_project_page %}
+        {% if site.github.releases.size == 0 %}
+          <blockquote>
+            <p>The contents of this repository are currently still under development and not production ready. Use at own risk!</p>
+          </blockquote>
+        {% endif %}
+      {% endif %}
+
 
       {{ content }}
 
