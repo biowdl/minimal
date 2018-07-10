@@ -49,7 +49,7 @@
         {% assign singlesampleExp = '' | split: '' %}
 
         {% for repository in site.github.public_repositories %}
-          {% assign category = repository.description | split: "Category:" | first %}
+          {% assign category = repository.description | split: "Category:" | last %}
           {% assign repoName = repository.name | split: '@@@' %}
           {% if category == "Multi-Sample" %}
             {% assign multisample = multisample | concat: repoName %}
@@ -93,7 +93,7 @@
           <blockquote>
             <p>
               There are no releases available for this repository.
-              The content is, therfore, likely still under development and
+              The content is, therefore, likely still under development and
               not production ready. Use at own risk!
             </p>
           </blockquote>
