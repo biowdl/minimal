@@ -28,8 +28,10 @@ footer {
   header ul.content {
     position:inherit;
   }
-
-  footer {
+  header ul.content ul {
+    position:inherit;
+  }
+  section, footer {
     width:100%
   }
 }
