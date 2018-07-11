@@ -23,6 +23,7 @@
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
         {% if site.github.is_project_page %}
+        <p class="view"><a href="/">BioWDL home page</a>
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
         {% endif %}
 
@@ -38,9 +39,22 @@
         </ul>
         {% endif %}
 
-        <h2>Contents:</h2>
-        <!--https://github.com/allejo/jekyll-toc-->
-        {% include toc.html html=content class="content" %}
+        <details>
+          <summary> Pages </summary>
+          <ul class="content"> <!-- This class is needed for thinner displays. -->
+            {% for page in site.pages %}
+              {% if page.title %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </details>
+
+        <details>
+          <summary> Page contents </summary>
+          <!--https://github.com/allejo/jekyll-toc-->
+          {% include toc.html html=content class="content" %}
+        </details>
 
         <!-- split repos into catergories -->
         {% assign multisample = '' | split: '' %}
@@ -65,28 +79,47 @@
           {% endif %}
         {% endfor %}
 
-        <h2>Pipelines</h2>
-        <h3>Production Ready</h3>
-        <h4>Multi-Sample</h4>
-        {% for repoName in multisample %}
-          <a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>) <br />
-        {% endfor %}
-        <br />
-        <h4>Single-Sample</h4>
-        {% for repoName in singlesample %}
-          <a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>) <br />
-        {% endfor %}
-        <br />
-        <h3>Experimental</h3>
-        <h4>Multi-Sample</h4>
-        {% for repoName in multisampleExp %}
-          <a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>) <br />
-        {% endfor %}
-        <br />
-        <h4>Single-Sample</h4>
-        {% for repoName in singlesampleExp %}
-          <a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>) <br />
-        {% endfor %}
+        <details>
+          <summary> Pipelines </summary>
+          <details style="text-indent: 10px;">
+            <summary> Production Ready ({{ multisample.size | plus: singlesample.size }})</summary>
+            <details style="text-indent: 20px;">
+              <summary> Multi-Sample ({{ multisample.size }})</summary>
+              <ul class="content" style="text-indent: 30px;">
+                {% for repoName in multisample %}
+                  <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
+                {% endfor %}
+              </ul>
+            </details>
+            <details style="text-indent: 20px;">
+              <summary> Single-Sample ({{ singlesample.size }})</summary>
+              <ul class="content" style="text-indent: 30px;">
+                {% for repoName in singlesample %}
+                  <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
+                {% endfor %}
+              </ul>
+            </details>
+          </details>
+          <details style="text-indent: 10px;">
+            <summary>Experimental ({{ multisampleExp.size | plus: singlesampleExp.size }})</summary>
+            <details style="text-indent: 20px;">
+              <summary>Multi-Sample ({{ multisampleExp.size }})</summary>
+              <ul class="content" style="text-indent: 30px;">
+                {% for repoName in multisampleExp %}
+                  <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
+                {% endfor %}
+              </ul>
+            </details>
+            <details style="text-indent: 20px;">
+              <summary>Single-Sample ({{ singlesampleExp.size }})</summary>
+              <ul class="content" style="text-indent: 30px;">
+                {% for repoName in singlesampleExp %}
+                  <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
+                {% endfor %}
+              </ul>
+            </details>
+          </details>
+        </details>
 
       </header>
       <section>
