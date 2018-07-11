@@ -42,9 +42,15 @@
         <details>
           <summary> Pages </summary>
           <ul class="content"> <!-- This class is needed for thinner displays. -->
-            {% for page in site.pages %}
-              {% if page.title %}
-                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% for innerPage in site.pages %}
+              {% if innerPage.title %}
+                <li>
+                  {% if page.title == innerPage.title %}
+                    <b><a href="{{ innerPage.url }}">{{ innerPage.title }}</a></b>
+                  {% else %}
+                    <a href="{{ innerPage.url }}">{{ innerPage.title }}</a>
+                  {% endif %}
+                </li>
               {% endif %}
             {% endfor %}
           </ul>
