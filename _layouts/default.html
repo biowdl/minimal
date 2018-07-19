@@ -194,6 +194,14 @@
             </p>
           </blockquote>
         {% endif %}
+        {% unless page.latest %}
+          <blockquote>
+            <p>
+              Please be aware that the page you are currently viewing is not
+              for the latest available version!
+            </p>
+          </blockquote>
+        {% endunless %}
       {% endif %}
 
       {{ content }}
