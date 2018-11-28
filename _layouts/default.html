@@ -119,8 +119,8 @@
         <!-- split repos into catergories -->
         {% assign multisample = '' | split: '' %}
         {% assign singlesample = '' | split: '' %}
-        {% assign multisampleExp = '' | split: '' %}
-        {% assign singlesampleExp = '' | split: '' %}
+        {% assign multisampleDev = '' | split: '' %}
+        {% assign singlesampleDev = '' | split: '' %}
 
         {% for repository in site.github.public_repositories %}
           {% assign category = repository.description | split: "Category:" | last %}
@@ -131,18 +131,18 @@
           {% if category == "Single-Sample" %}
             {% assign singlesample = singlesample | concat: repoName %}
           {% endif %}
-          {% if category == "Multi-Sample Experimental" %}
-            {% assign multisampleExp = multisampleExp | concat: repoName %}
+          {% if category == "Multi-Sample InDevelopment" %}
+            {% assign multisampleDev = multisampleDev | concat: repoName %}
           {% endif %}
-          {% if category == "Single-Sample Experimental" %}
-            {% assign singlesampleExp = singlesampleExp | concat: repoName %}
+          {% if category == "Single-Sample InDevelopment" %}
+            {% assign singlesampleDev = singlesampleDev | concat: repoName %}
           {% endif %}
         {% endfor %}
 
         <details>
           <summary> Pipelines </summary>
           <details style="text-indent: 10px;">
-            <summary> Production Ready ({{ multisample.size | plus: singlesample.size }})</summary>
+            <summary> Released ({{ multisample.size | plus: singlesample.size }})</summary>
             <details style="text-indent: 20px;">
               <summary> Multi-Sample ({{ multisample.size }})</summary>
               <ul class="content" style="text-indent: 30px;">
@@ -161,19 +161,19 @@
             </details>
           </details>
           <details style="text-indent: 10px;">
-            <summary>Experimental ({{ multisampleExp.size | plus: singlesampleExp.size }})</summary>
+            <summary>In development ({{ multisampleDev.size | plus: singlesampleDev.size }})</summary>
             <details style="text-indent: 20px;">
-              <summary>Multi-Sample ({{ multisampleExp.size }})</summary>
+              <summary>Multi-Sample ({{ multisampleDev.size }})</summary>
               <ul class="content" style="text-indent: 30px;">
-                {% for repoName in multisampleExp %}
+                {% for repoName in multisampleDev %}
                   <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
                 {% endfor %}
               </ul>
             </details>
             <details style="text-indent: 20px;">
-              <summary>Single-Sample ({{ singlesampleExp.size }})</summary>
+              <summary>Single-Sample ({{ singlesampleDev.size }})</summary>
               <ul class="content" style="text-indent: 30px;">
-                {% for repoName in singlesampleExp %}
+                {% for repoName in singlesampleDev %}
                   <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
                 {% endfor %}
               </ul>
@@ -189,14 +189,14 @@
           <blockquote>
             <p>
               <b>This is not a stable version!</b><br />
-              You are currently viewing the documentation for a developmental
+              You are currently viewing the documentation for a development
               version. It is not guaranteed that this documentation is up to
               date. Things will likely change without announcement or
               versioning incrementation.
 
               If there is no other documentation available, there are likely no
               releases available for this repository. The content is,
-              therefore, likely still under development and not production
+              therefore, likely still in development and not production
               ready. Use at your own risk!
             </p>
           </blockquote>
