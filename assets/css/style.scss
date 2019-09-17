@@ -3,6 +3,11 @@
 
 @import "jekyll-theme-minimal";
 
+body {
+  background-color: #333;
+  color: #eee;
+}
+
 code {
   background-color: #eee;
   border-radius: 100px;
@@ -17,11 +22,21 @@ pre code {
  padding-left: 0px;
 }
 
+blockquote {
+  background-color: black;
+  border-left: 5px solid DarkSeaGreen;
+  padding-top: 2px;
+}
+
 header {
   width: 290px;
   height: 80%;
   display: block;
-  overflow-y: scroll
+  overflow-y: auto;
+}
+
+header h1 {
+  text-align: center;
 }
 
 section {
@@ -33,11 +48,41 @@ footer {
   width: inherit;
   bottom:0px;
   text-align: right;
-  background: white;
+  background: #333;
+  border-top: solid 5px DarkSeaGreen;
 }
 
 .wrapper {
   width:1005px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
+a {
+  color: PowderBlue;
+}
+
+a:hover {
+  color: LightSteelBlue ;
+}
+
+th {
+  color: DarkSeaGreen;
+  border-color: DarkSeaGreen;
+}
+
+dt {
+  color: DarkSeaGreen
+}
+
+b, strong {
+  color: white;
+}
+
+hr {
+  background-color: DarkSeaGreen;
 }
 
 @media print, screen and (max-width: 1080px) {
