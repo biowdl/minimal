@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" size="16x16" href="assets/img/16.png">
+    <link rel="icon" type="image/png" size="32x32" href="assets/img/32.png">
 
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
@@ -98,7 +100,7 @@
 
             <!-- make section per version -->
             {% for version in versions %}
-              <details style="text-indent: 10px;">
+              <details>
                 <summary> {{version}} </summary>
                 <ul class="content"> <!-- This class is needed for thinner displays. -->
                   {% for innerPage in site.pages %}
@@ -150,40 +152,40 @@
 
         <details>
           <summary> Pipelines </summary>
-          <details style="text-indent: 10px;">
+          <details>
             <summary> Released ({{ multisample.size | plus: singlesample.size }}) </summary>
-            <details style="text-indent: 20px;">
+            <details>
               <summary> Multi-Sample ({{ multisample.size }}) </summary>
-              <ul class="content" style="text-indent: 30px;">
+              <ul class="content">
                 {% for repoName in multisample %}
-                  <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
+                  <li><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
                 {% endfor %}
               </ul>
             </details>
-            <details style="text-indent: 20px;">
+            <details>
               <summary> Single-Sample ({{ singlesample.size }}) </summary>
-              <ul class="content" style="text-indent: 30px;">
+              <ul class="content">
                 {% for repoName in singlesample %}
-                  <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
+                  <li><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
                 {% endfor %}
               </ul>
             </details>
           </details>
-          <details style="text-indent: 10px;">
+          <details>
             <summary> In Development ({{ multisampleDev.size | plus: singlesampleDev.size }})</summary>
-            <details style="text-indent: 20px;">
+            <details>
               <summary> Multi-Sample ({{ multisampleDev.size }}) </summary>
-              <ul class="content" style="text-indent: 30px;">
+              <ul class="content">
                 {% for repoName in multisampleDev %}
-                  <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
+                  <li><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
                 {% endfor %}
               </ul>
             </details>
-            <details style="text-indent: 20px;">
+            <details>
               <summary> Single-Sample ({{ singlesampleDev.size }}) </summary>
-              <ul class="content" style="text-indent: 30px;">
+              <ul class="content">
                 {% for repoName in singlesampleDev %}
-                  <li style="text-indent: 0px;"><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
+                  <li><a href="https://biowdl.github.io/{{ repoName }}">{{ repoName }}</a> (<a href="https://github.com/biowdl/{{ repoName }}">repo</a>)</li>
                 {% endfor %}
               </ul>
             </details>

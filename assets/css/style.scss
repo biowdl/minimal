@@ -60,12 +60,14 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-a {
+a, summary {
   color: PowderBlue;
+  cursor: pointer;
 }
 
-a:hover {
+a:hover, summary:hover {
   color: LightSteelBlue ;
+  font-weight: bold;
 }
 
 th {
@@ -83,6 +85,27 @@ b, strong {
 
 hr {
   background-color: DarkSeaGreen;
+}
+
+header ul.content {
+  margin-left: 15px;
+  padding-left: 10px;
+  list-style-type: disc;
+  margin-bottom: 0;
+}
+
+header ul.content ul {
+  padding-left: 10px;
+  list-style-type: disc;
+  border-left: 1px solid DarkSeaGreen;
+  margin-bottom: 0;
+}
+
+header details {
+  margin: 5px;
+  padding: 5px;
+  border-radius:10px;
+  border-bottom: 1px solid DarkSeaGreen;
 }
 
 @media print, screen and (max-width: 1080px) {
