@@ -88,15 +88,17 @@ hr {
 }
 
 header ul.content {
-  margin-left: 15px;
-  padding-left: 10px;
+  margin-left: 5px;
+  padding-left: 5px;
   list-style-type: disc;
+  list-style-position: inside;
   margin-bottom: 0;
 }
 
 header ul.content ul {
   padding-left: 10px;
   list-style-type: disc;
+  list-style-position: inside;
   border-left: 1px solid DarkSeaGreen;
   margin-bottom: 0;
 }
