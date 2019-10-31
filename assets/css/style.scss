@@ -76,7 +76,8 @@ th {
 }
 
 dt {
-  color: DarkSeaGreen
+  color: DarkSeaGreen;
+  margin-top: 1em;
 }
 
 b, strong {
@@ -103,7 +104,7 @@ header ul.content ul {
   margin-bottom: 0;
 }
 
-header details {
+details {
   margin: 5px;
   padding: 5px;
   border-radius:10px;
