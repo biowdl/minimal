@@ -80,6 +80,10 @@ dt {
   margin-top: 1em;
 }
 
+dt a, dt a:hover {
+    all: inherit
+}
+
 b, strong {
   color: white;
 }
