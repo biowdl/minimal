@@ -134,13 +134,24 @@ header details {
 @media print, screen and (max-width: 960px) {
   header {
     overflow-y: auto;
+    width: auto;
+    padding-right: 0px;
   }
+
+  header img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   header ul.content {
     position:inherit;
   }
+
   header ul.content ul {
     position:inherit;
   }
+
   section, footer {
     width:100%
   }
