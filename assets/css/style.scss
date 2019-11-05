@@ -81,7 +81,8 @@ dt {
 }
 
 dt a, dt a:hover {
-    all: inherit
+    all: inherit;
+    cursor: pointer;
 }
 
 b, strong {
@@ -110,9 +111,14 @@ header ul.content ul {
 
 details {
   margin: 5px;
+  margin-bottom: 10px;
   padding: 5px;
-  border-radius:10px;
   border-bottom: 1px solid DarkSeaGreen;
+  background-color: black;
+}
+
+header details {
+  margin: 0px;
 }
 
 @media print, screen and (max-width: 1080px) {

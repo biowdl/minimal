@@ -52,6 +52,12 @@
           </ul>
         {% endif %}
 
+        <details open>
+          <summary> Page contents </summary>
+          <!--https://github.com/allejo/jekyll-toc-->
+          {% include toc.html html=content class="content" %}
+        </details>
+
         {% if site.github.is_user_page %}
           <details>
             <summary> Pages </summary>
@@ -127,12 +133,6 @@
             {% endfor %}
           </details>
         {% endif %}
-
-        <details>
-          <summary> Page contents </summary>
-          <!--https://github.com/allejo/jekyll-toc-->
-          {% include toc.html html=content class="content" %}
-        </details>
 
         <!-- split repos into catergories -->
         {% assign multisample = '' | split: '' %}
